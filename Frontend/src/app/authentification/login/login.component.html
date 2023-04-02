@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>login</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    </head>
+
+<body>
+
+<div class="block-content d-flex flex-align-items-center flex-justify-content-between container">
+    <div class="block-left d-flex flex-column">
+        <div class="block-left__image">
+           <picture>
+                <img src="" />
+            </picture> 
+        </div>
+        <h1 class="block-left__title fw-300 fs-30">Bienvenue dans le réseau social d'échange et de partage de contenus.</h1>
+    </div>
+    <div class="block-right mf-auto d-flex flex-column">
+        <form [formGroup]="loginForm" #localForm="ngForm">
+            <div>
+                <label for="email"></label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Adresse email"
+                    formControlName="email"
+                />
+            </div>
+
+            <div>
+                <label for="password"></label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Mot de passe"
+                    formControlName="password"
+                />
+            </div>
+
+            <p class="errorMsg" *ngIf="errorMsg">{{ errorMsg }}</p>
+            <button type="submit" (click)="onSubmit()" class="btn btn-login fs-16">Se connecter</button>
+            <p class="block-right__forgotPassword fw-300 mb-10 fs-14">Mot de passe oublié ?</p>
+        </form>
+        <hr class="w100 mb-10" />
+        <button (click)="onCreate()" class="btn  btn-primary">S'inscrire</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</body>
+</html>

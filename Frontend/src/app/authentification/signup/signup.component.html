@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>login</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    </head>
+
+<body>
+
+<div class="modal-header">
+    <div class="modal-header__title d-flex flex-align-items-center flex-justify-content-between">
+        <h2 class="fs-40">S'inscrire</h2>
+        <mat-icon aria-label="Fermer la fenetre" (click)="closeTab()" class="cross">cancel</mat-icon>
+    </div>
+    <!--<p class="modal-header__info fs-24 fw-300">C'est rapide et facile</p>-->
+</div>
+<hr class="w100 mb-30 mt-30" />
+
+<div class="container">
+<form class="modal-form"  class ="col-lg-11"  [formGroup]="signupForm">
+    <div class="modal-form__inline w100 d-flex">
+        <div class="form-group">
+            <label for="firstname"></label>
+            <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                placeholder="Prénom"
+                formControlName="firstname"
+                name="firstname"
+            />
+        </div>
+
+        <div class="form-group secondInput">
+            <label for="lastname"></label>
+            <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                placeholder="Nom"
+                formControlName="lastname"
+                name="lastname"
+            />
+        </div>
+    </div>
+    <div class="errorMsg" *ngIf="firstname.errors?.['isNumeric'] || lastname.errors?.['isNumeric']">
+        Ce champ doit contenir au minimum 2 lettres et pas de chiffre
+    </div>
+
+    <div class="form-group">
+        <label for="emailSignup"></label>
+        <input
+            type="email"
+            class="form-control"
+            id="emailSignup"
+            placeholder="Adresse email"
+            formControlName="emailSignup"
+            name="emailSignup"
+        />
+    </div>
+
+    <div class="errorMsg" *ngIf="emailSignup.errors?.['emailMatch']">
+        L'adresse email n'est pas correct! (exemple@test.com)
+    </div>
+    <div class="modal-form__inline w100 d-flex">
+        <div class="form-group">
+            <label for="password"></label>
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Mot de passe"
+                formControlName="password"
+                name="password"
+            />
+        </div>
+        <div class="form-group">
+            <label for="passwordControl"></label>
+            <input
+                type="password"
+                class="form-control"
+                id="passwordControl"
+                placeholder="Confirmer mot de passe"
+                formControlName="passwordControl"
+                name="passwordControl"
+            />
+        </div>
+    </div>
+    <div class="errorMsg" *ngIf="password.errors?.['passwordStrength']">
+        Le password doit contenir au moins une majuscule, une minuscule et un chiffre
+    </div>
+    <div class="errorMsg" *ngIf="passwordControl.errors?.['passwordMismatch']">
+        Les mots de passe ne correspondent pas
+    </div>
+
+    <br/>
+    <button [disabled]="signupForm.invalid" (click)="onSubmit()" type="submit" class="btn btn-lg btn-primary btn-block">
+        Créer nouveau compte
+    </button>
+    <p class="errorMsg" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+
+</form>
+</div>  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</body>
+</html>  
